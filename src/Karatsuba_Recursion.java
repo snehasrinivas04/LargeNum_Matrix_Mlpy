@@ -336,15 +336,21 @@ public class Karatsuba_Recursion
     //trim 0's in the start of a string in diff
     public static String trimZero(String x)
     {
+    	String prefix = "";
+    	if (!x.isEmpty() && x.charAt(0) == '-') {
+    		prefix = "-";
+    		x = x.substring(1);
+    	}
+    	
     	for(int i=0; i<x.length(); i++)
     	{
     		if(x.charAt(i)!='0')
     		{
     			String x1 = x.substring(i);
-    			return x1;
+    			return prefix + x1;
     		}
     	}
-    	return "0";
+    	return prefix + "0";
     }
     
     //karatsuba S5 function_append 0's
@@ -355,6 +361,6 @@ public class Karatsuba_Recursion
     	{
     		x= x + 0;
     	}
-		return x;
+		return trimZero(x);
     }
 }
