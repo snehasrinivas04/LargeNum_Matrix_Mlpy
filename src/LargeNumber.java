@@ -494,14 +494,21 @@ public class LargeNumber {
 
 	// trim 0's in the start of a string in diff
 	public static String trimZero(String x) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < x.length(); i++) {
-			if (x.charAt(i) != '0') {
-				sb.append(x.substring(i));
-				return sb.toString();
-			}
-		}
-		return "0";
+		String prefix = "";
+    	if (!x.isEmpty() && x.charAt(0) == '-') {
+    		prefix = "-";
+    		x = x.substring(1);
+    	}
+    	
+    	for(int i=0; i<x.length(); i++)
+    	{
+    		if(x.charAt(i)!='0')
+    		{
+    			String x1 = x.substring(i);
+    			return prefix + x1;
+    		}
+    	}
+    	return prefix + "0";
 	}
 
 	// karatsuba S5 function_append 0's
