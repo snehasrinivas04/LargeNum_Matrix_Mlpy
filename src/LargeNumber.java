@@ -519,6 +519,6 @@ public class LargeNumber {
 		for (int i = 0; i < length; i++) {
 			sb.append(0);
 		}
-		return sb.toString();
+		return trimZero(sb.toString());
 	}
 }
